@@ -16,11 +16,22 @@ class CustomLookAndFeel : public LookAndFeel_V4
 {
 public:
     
+    // Default Constructor
+    CustomLookAndFeel();
+    
+    // Custom button drawing
+    void drawButtonBackground (Graphics& g, Button& button, const Colour& backgroundColour,
+                               bool isMouseOverButton, bool isButtonDown) override;
+    
     // Colours
     struct Colours {
         static const ColourGradient background;
+        static const ColourGradient backgroundOver;
+        static const Colour buttonEdge;
     };
     
 private:
+    
+    float buttonRadius;
     
 };

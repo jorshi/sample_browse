@@ -21,6 +21,9 @@ SampleBrowserAudioProcessorEditor::SampleBrowserAudioProcessorEditor (SampleBrow
     sampleGrid = new SampleGrid(8);
     addAndMakeVisible(sampleGrid);
     
+    addAndMakeVisible(&filesButton);
+    filesButton.setButtonText("Sample Manager");
+    
     setSize (650, 650);
 }
 
@@ -41,4 +44,5 @@ void SampleBrowserAudioProcessorEditor::resized()
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
     sampleGrid->setBounds(75, 125, 496, 496);
+    filesButton.setBounds(530, 15, 90, 30);
 }

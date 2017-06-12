@@ -35,7 +35,7 @@ SampleGrid::SampleGrid(int numSquares)
     {
         for (int j = 0; j < numSquares_; ++j)
         {
-            newButton = new ShapeButton("Pad " + std::to_string(count), normal, over, down);
+            newButton = new ShapeButton("Pad " + std::to_string(count), Colour::fromRGB((i*10) + 100, (j*10) + 100, 150 - (i+j)*2), over, down);
             newButton->setShape(buttonPath, true, true, false);
             addAndMakeVisible(newButton);
             buttonPads.insert(count++, newButton);
