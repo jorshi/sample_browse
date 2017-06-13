@@ -14,7 +14,7 @@
 
 //==============================================================================
 SampleBrowserAudioProcessorEditor::SampleBrowserAudioProcessorEditor (SampleBrowserAudioProcessor& p)
-    : AudioProcessorEditor (&p), processor (p)
+    : AudioProcessorEditor (&p), processor (p), sampleManager(p.getSampleManager())
 {
     setLookAndFeel(&customLookAndFeel);
     
@@ -51,5 +51,5 @@ void SampleBrowserAudioProcessorEditor::resized()
 //==============================================================================
 void SampleBrowserAudioProcessorEditor::buttonClicked(juce::Button *button)
 {
-    directoryChooser.getDirectory();
+    sampleManager->loadNewSamples();
 }

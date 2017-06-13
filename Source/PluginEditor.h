@@ -15,6 +15,7 @@
 #include "CustomLookAndFeel.h"
 #include "SampleGrid.h"
 #include "DirectoryChooser.h"
+#include "SampleManager.h"
 
 
 //==============================================================================
@@ -37,6 +38,8 @@ private:
     
     // Button callback
     void buttonClicked(Button* button) override;
+    
+    SampleManager* sampleManager;
     
     DirectoryChooser directoryChooser;
     

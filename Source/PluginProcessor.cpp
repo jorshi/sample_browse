@@ -25,6 +25,7 @@ SampleBrowserAudioProcessor::SampleBrowserAudioProcessor()
                        )
 #endif
 {
+    sampleManager_ = new SampleManager;
 }
 
 SampleBrowserAudioProcessor::~SampleBrowserAudioProcessor()

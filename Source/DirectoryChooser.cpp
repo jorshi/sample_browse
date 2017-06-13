@@ -16,16 +16,13 @@ DirectoryChooser::DirectoryChooser()
     
 }
 
-void DirectoryChooser::getDirectory()
+bool DirectoryChooser::getDirectory(File& file)
 {
     if (fileChooser_->browseForDirectory())
     {
-        int numFiles;
-        File newDirectory = fileChooser_->getResult();
-        Array<juce::File> results;
-        
-        numFiles = newDirectory.findChildFiles(results, 2, true, "*.wav");
-        std::cout << numFiles;
-        
+        file = fileChooser_->getResult();
+        return true;
     }
+    
+    return false;
 }

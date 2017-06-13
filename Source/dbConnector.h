@@ -10,5 +10,21 @@
 
 #pragma once
 
+#include "../JuceLibraryCode/JuceHeader.h"
 #include <sqlite3.h>
 
+class DBConnector
+{
+public:
+    
+    // Default Constructor
+    DBConnector();
+    
+    // Default Deconstructor
+    ~DBConnector();
+    
+private:
+    
+    sqlite3* db_;
+    bool isConnected_;
+};

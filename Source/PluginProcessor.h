@@ -12,6 +12,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "dbConnector.h"
+#include "SampleManager.h"
 
 
 //==============================================================================
@@ -55,8 +56,14 @@ public:
     //==============================================================================
     void getStateInformation (MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
+    
+    //==============================================================================
+    SampleManager* getSampleManager() { return sampleManager_.get(); };
 
 private:
     //==============================================================================
+    ScopedPointer<SampleManager> sampleManager_;
+    
+    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SampleBrowserAudioProcessor)
 };

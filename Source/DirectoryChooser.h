@@ -23,7 +23,7 @@ public:
     ~DirectoryChooser() {};
     
     // Get a new directory
-    void getDirectory();
+    bool getDirectory(File&);
     
     
 private:
