@@ -23,6 +23,7 @@ SampleBrowserAudioProcessorEditor::SampleBrowserAudioProcessorEditor (SampleBrow
     
     addAndMakeVisible(&filesButton);
     filesButton.setButtonText("Sample Manager");
+    filesButton.addListener(this);
     
     setSize (650, 650);
 }
@@ -45,4 +46,10 @@ void SampleBrowserAudioProcessorEditor::resized()
     // subcomponents in your editor..
     sampleGrid->setBounds(75, 125, 496, 496);
     filesButton.setBounds(530, 15, 90, 30);
+}
+
+//==============================================================================
+void SampleBrowserAudioProcessorEditor::buttonClicked(juce::Button *button)
+{
+    directoryChooser.getDirectory();
 }

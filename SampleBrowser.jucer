@@ -13,6 +13,10 @@
               pluginAAXCategory="AAX_ePlugInCategory_Dynamics" jucerVersion="5.0.2">
   <MAINGROUP id="bS7Zw9" name="SampleBrowser">
     <GROUP id="{05089DAC-D89A-209E-728C-18A42D6C77FD}" name="Source">
+      <FILE id="LSj2oJ" name="DirectoryChooser.cpp" compile="1" resource="0"
+            file="Source/DirectoryChooser.cpp"/>
+      <FILE id="cV3NXN" name="DirectoryChooser.h" compile="0" resource="0"
+            file="Source/DirectoryChooser.h"/>
       <FILE id="nfA7ux" name="dbConnector.cpp" compile="1" resource="0" file="Source/dbConnector.cpp"/>
       <FILE id="oAU1E8" name="dbConnector.h" compile="0" resource="0" file="Source/dbConnector.h"/>
       <FILE id="wccNfZ" name="SamplePad.cpp" compile="1" resource="0" file="Source/SamplePad.cpp"/>

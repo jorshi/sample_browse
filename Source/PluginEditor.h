@@ -14,12 +14,14 @@
 #include "PluginProcessor.h"
 #include "CustomLookAndFeel.h"
 #include "SampleGrid.h"
+#include "DirectoryChooser.h"
 
 
 //==============================================================================
 /**
 */
-class SampleBrowserAudioProcessorEditor  : public AudioProcessorEditor
+class SampleBrowserAudioProcessorEditor  : public AudioProcessorEditor,
+                                           public ButtonListener
 {
 public:
     SampleBrowserAudioProcessorEditor (SampleBrowserAudioProcessor&);
@@ -30,14 +32,19 @@ public:
     void resized() override;
 
 private:
-    // This reference is provided as a quick way for your editor to
-    // access the processor object that created it.
+    // Reference to processor
     SampleBrowserAudioProcessor& processor;
+    
+    // Button callback
+    void buttonClicked(Button* button) override;
+    
+    DirectoryChooser directoryChooser;
     
     CustomLookAndFeel customLookAndFeel;
     ScopedPointer<SampleGrid> sampleGrid;
     
     TextButton filesButton;
+
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SampleBrowserAudioProcessorEditor)
 };
