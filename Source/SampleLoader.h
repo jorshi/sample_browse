@@ -12,9 +12,11 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "dbConnector.h"
+#include "Sample.h"
 
 #include <queue>
 #include <mutex>
+#include <map>
 
 class SampleLoader : private Thread
 {
@@ -30,12 +32,16 @@ public:
     
 private:
     
+    using TaggedSamples = std::map<String, Array<Sample*>>;
+    
     // Run thread
     void run() override;
     
     void loadSamples();
     
     void exploreDirectory(const File& directory, Array<String>& tags);
+    
+    void saveSample(Sample& sample);
     
     
     std::queue<File> directories_;

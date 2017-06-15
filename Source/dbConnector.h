@@ -23,6 +23,12 @@ public:
     // Default Deconstructor
     ~DBConnector();
     
+    // Run a DB command
+    bool runCommand(String) const;
+    
+    // Last insert ID
+    int lastInsertId() const { return sqlite3_last_insert_rowid(db_); };
+    
 private:
     
     //===========================================================================
@@ -40,7 +46,8 @@ private:
     
     //===========================================================================
     void setupTables();
-    bool runCommand(String);
+    
+    int setupSampleTableCallback(void *notUsed, int argc, char **argv, char **azColName);
     
     
     sqlite3* db_;

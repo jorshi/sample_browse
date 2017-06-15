@@ -13,6 +13,8 @@
               pluginAAXCategory="AAX_ePlugInCategory_Dynamics" jucerVersion="5.0.2">
   <MAINGROUP id="bS7Zw9" name="SampleBrowser">
     <GROUP id="{05089DAC-D89A-209E-728C-18A42D6C77FD}" name="Source">
+      <FILE id="Ld8SJU" name="Sample.cpp" compile="1" resource="0" file="Source/Sample.cpp"/>
+      <FILE id="rhMESi" name="Sample.h" compile="0" resource="0" file="Source/Sample.h"/>
       <FILE id="xdsdca" name="SampleLoader.cpp" compile="1" resource="0"
             file="Source/SampleLoader.cpp"/>
       <FILE id="nNsRAE" name="SampleLoader.h" compile="0" resource="0" file="Source/SampleLoader.h"/>

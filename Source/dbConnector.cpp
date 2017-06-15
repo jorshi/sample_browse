@@ -14,7 +14,7 @@
 DBConnector::DBConnector()
 {
     
-    if (sqlite3_open("test.db", &db_))
+    if (sqlite3_open("sample_browse.db", &db_))
     {
         isConnected_ = false;
         std::cout << "Failed to open DB";
@@ -32,11 +32,11 @@ DBConnector::DBConnector()
 DBConnector::~DBConnector()
 {
     sqlite3_close(db_);
-    std::cout << "DB Connection successfully closed\n";
+    std::cout << "DB Connection closed\n";
 }
 
 
-bool DBConnector::runCommand(juce::String command)
+bool DBConnector::runCommand(juce::String command) const
 {
     char *zErrMsg = 0;
     int rc = sqlite3_exec(db_, command.toRawUTF8(), callback, 0, &zErrMsg);
@@ -51,26 +51,38 @@ bool DBConnector::runCommand(juce::String command)
 }
 
 
-
 void DBConnector::setupTables()
 {
-    // Check whether tables exist
-    if (!runCommand("SELECT 1 FROM `samples` LIMIT 1"))
-    {
-        // Need to setup tables
-        String sql = "CREATE TABLE `samples`(" \
-            "id INT PRIMARY KEY NOT NULL" \
-            ");";
-        
-        std::cout << runCommand(sql);
-        
-    }
-    else
-    {
-        runCommand("DROP TABLE `samples`;");
-        std::cout << "Tables setup\n";
-    }
+    // Need to setup tables
+    String sqlSamples = "CREATE TABLE IF NOT EXISTS`samples` ( " \
+        "`id` INTEGER PRIMARY KEY AUTOINCREMENT, " \
+        "`name` VARCHAR(200) NOT NULL, " \
+        "`path` VARCHAR(200) NOT NULL, " \
+        "`start_time` DOUBLE DEFAULT NULL, " \
+        "`stop_time` DOUBLE DEFAULT NULL, " \
+        "UNIQUE (`path`) " \
+        ");";
     
+    String sqlTags = "CREATE TABLE IF NOT EXISTS `tags` ( " \
+        "`id` INTEGER PRIMARY KEY AUTOINCREMENT, " \
+        "`tag` VARCHAR(200) NOT NULL UNIQUE " \
+        ");";
+    
+    String sqlSampleTags = "CREATE TABLE IF NOT EXISTS `sample_tags` ( " \
+        "`id` INTEGER PRIMARY KEY AUTOINCREMENT, " \
+        "`sample_id` INT(11) NOT NULL, " \
+        "`tag_id` INT(11) NOT NULL, " \
+        "UNIQUE (`sample_id`, `tag_id`), " \
+        "FOREIGN KEY (`sample_id`) REFERENCES `samples` (`id`) ON DELETE CASCADE, " \
+        "FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`) ON DELETE CASCADE " \
+        ");";
+        
+    if (runCommand(sqlSamples) &&
+            runCommand(sqlTags) &&
+            runCommand(sqlSampleTags))
+    {
+        std::cout << "All tables succesfully created\n";
+    }
 }
 
 

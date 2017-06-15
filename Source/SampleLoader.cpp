@@ -55,6 +55,9 @@ void SampleLoader::run()
 void SampleLoader::loadSamples()
 {
     Array<String> tags;
+    Array<Sample> samples;
+    TaggedSamples sampleTags;
+
     tags.add(currentlyLoading_->getFileName());
     exploreDirectory(*currentlyLoading_, tags);
         
@@ -78,7 +81,9 @@ void SampleLoader::exploreDirectory(const File& directory, Array<String>& tags)
         }
         else if (fileFilter_->isFileSuitable(iter.getFile()))
         {
-            
+            Sample newSample(0, iter.getFile().getFileName(), iter.getFile().getFullPathName(), 0, 0);
+            newSample.save(db_);
+            //newSample.saveTagsForSample(db_, newTags);
         }
     }
 }
@@ -94,4 +99,10 @@ void SampleLoader::addDirectory(File& directory)
     {
         startThread();
     }
+}
+
+
+void SampleLoader::saveSample(Sample &sample)
+{
+    
 }
