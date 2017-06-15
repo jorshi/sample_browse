@@ -22,7 +22,7 @@ SampleBrowserAudioProcessorEditor::SampleBrowserAudioProcessorEditor (SampleBrow
     addAndMakeVisible(sampleGrid);
     
     addAndMakeVisible(&filesButton);
-    filesButton.setButtonText("Sample Manager");
+    filesButton.setButtonText("Load Samples");
     filesButton.addListener(this);
     
     setSize (650, 650);
