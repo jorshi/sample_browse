@@ -31,6 +31,8 @@ public:
     
     void updateGridRandom();
     
+    Sample::Ptr getSample(int num) const;
+    
 private:
     
     static int selectSampleCallback(void *param, int argc, char **argv, char **azCol)

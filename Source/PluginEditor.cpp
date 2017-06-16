@@ -19,6 +19,7 @@ SampleBrowserAudioProcessorEditor::SampleBrowserAudioProcessorEditor (SampleBrow
     setLookAndFeel(&customLookAndFeel);
     
     sampleGrid = new SampleGrid(8);
+    sampleGrid->addActionListener(this);
     addAndMakeVisible(sampleGrid);
     
     addAndMakeVisible(&filesButton);
@@ -42,6 +43,13 @@ void SampleBrowserAudioProcessorEditor::paint (Graphics& g)
     // (Our component is opaque, so we must completely fill the background with a solid colour)
     g.setGradientFill(CustomLookAndFeel::Colours::background);
     g.fillAll();
+    if (uiSample !=  nullptr)
+    {
+        g.setColour(Colours::black);
+        g.drawText(uiSample->getName(), 300, 15, 100, 50, Justification::centred);
+    }
+   
+
 }
 
 void SampleBrowserAudioProcessorEditor::resized()
@@ -65,4 +73,12 @@ void SampleBrowserAudioProcessorEditor::buttonClicked(juce::Button *button)
         sampleManager->updateGridRandom();
     }
 
+}
+
+
+void SampleBrowserAudioProcessorEditor::actionListenerCallback(const juce::String &message)
+{
+    int pad = message.getIntValue();
+    uiSample = sampleManager->getSample(pad);
+    repaint();
 }

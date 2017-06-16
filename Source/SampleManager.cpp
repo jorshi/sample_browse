@@ -35,3 +35,14 @@ void SampleManager::updateGridRandom()
         queuedSamples_.clear();
     }
 }
+
+
+Sample::Ptr SampleManager::getSample(int num) const
+{
+    if (num < currentSamples_.size())
+    {
+        return currentSamples_.getUnchecked(num);
+    }
+    
+    return nullptr;
+}

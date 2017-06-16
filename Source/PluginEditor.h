@@ -16,13 +16,15 @@
 #include "SampleGrid.h"
 #include "DirectoryChooser.h"
 #include "SampleManager.h"
+#include "Sample.h"
 
 
 //==============================================================================
 /**
 */
 class SampleBrowserAudioProcessorEditor  : public AudioProcessorEditor,
-                                           public ButtonListener
+                                           public ButtonListener,
+                                           public ActionListener
 {
 public:
     SampleBrowserAudioProcessorEditor (SampleBrowserAudioProcessor&);
@@ -39,6 +41,9 @@ private:
     // Button callback
     void buttonClicked(Button* button) override;
     
+    // Action callback
+    void actionListenerCallback(const String& message) override;
+    
     SampleManager* sampleManager;
     
     DirectoryChooser directoryChooser;
@@ -48,6 +53,8 @@ private:
     
     TextButton filesButton;
     TextButton loadSamples;
+    
+    Sample::Ptr uiSample;
 
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SampleBrowserAudioProcessorEditor)
