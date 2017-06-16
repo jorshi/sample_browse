@@ -37,6 +37,7 @@ SampleGrid::SampleGrid(int numSquares)
         {
             newButton = new ShapeButton("Pad " + std::to_string(count), Colour::fromRGB((i*10) + 100, (j*10) + 100, 150 - (i+j)*2), over, down);
             newButton->setShape(buttonPath, true, true, false);
+            newButton->addListener(this);
             addAndMakeVisible(newButton);
             buttonPads.insert(count++, newButton);
         }
@@ -66,4 +67,9 @@ void SampleGrid::resized()
             count++;
         }
     }
+}
+
+void SampleGrid::buttonClicked(juce::Button *button)
+{
+    std::cout << button->getName() << "\n";
 }

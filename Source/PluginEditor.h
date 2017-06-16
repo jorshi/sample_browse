@@ -47,6 +47,7 @@ private:
     ScopedPointer<SampleGrid> sampleGrid;
     
     TextButton filesButton;
+    TextButton loadSamples;
 
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SampleBrowserAudioProcessorEditor)

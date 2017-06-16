@@ -25,6 +25,10 @@ SampleBrowserAudioProcessorEditor::SampleBrowserAudioProcessorEditor (SampleBrow
     filesButton.setButtonText("Load Samples");
     filesButton.addListener(this);
     
+    addAndMakeVisible(&loadSamples);
+    loadSamples.setButtonText("Set Samples");
+    loadSamples.addListener(this);
+    
     setSize (650, 650);
 }
 
@@ -45,11 +49,20 @@ void SampleBrowserAudioProcessorEditor::resized()
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
     sampleGrid->setBounds(75, 125, 496, 496);
-    filesButton.setBounds(530, 15, 90, 30);
+    filesButton.setBounds(481, 51, 90, 30);
+    loadSamples.setBounds(75, 51, 90, 30);
 }
 
 //==============================================================================
 void SampleBrowserAudioProcessorEditor::buttonClicked(juce::Button *button)
 {
-    sampleManager->loadNewSamples();
+    if (button == &filesButton)
+    {
+        sampleManager->loadNewSamples();
+    }
+    else if (button == &loadSamples)
+    {
+        sampleManager->updateGridRandom();
+    }
+
 }

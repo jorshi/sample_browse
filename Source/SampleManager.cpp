@@ -24,3 +24,14 @@ void SampleManager::loadNewSamples()
     }
 }
 
+
+void SampleManager::updateGridRandom()
+{
+    queuedSamples_.clear();
+    String sql = "SELECT * FROM `samples` LIMIT 64;";
+    if(db_.runCommand(sql, selectSampleCallback, this))
+    {
+        currentSamples_.swapWith(queuedSamples_);
+        queuedSamples_.clear();
+    }
+}

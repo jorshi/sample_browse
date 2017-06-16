@@ -13,9 +13,11 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "dbConnector.h"
 
-class Sample
+class Sample : public ReferenceCountedObject
 {
 public:
+    
+    typedef ReferenceCountedObjectPtr<Sample> Ptr;
     
     // Default Constructor
     Sample() {};
@@ -35,6 +37,11 @@ public:
     int getId() const { return id_; };
     const File& getFile() const { return path_; };
     const String& getName() const { return name_; };
+    
+    // Setters
+    void setId(const int& id) { id_ = id; };
+    void setName(const String& name) { name_ = name; };
+    void setPath(const String& path) { path_ = File(path); };
     
     
 private:

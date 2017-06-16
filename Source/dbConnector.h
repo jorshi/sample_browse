@@ -24,7 +24,7 @@ public:
     ~DBConnector();
     
     // Run a DB command
-    bool runCommand(String) const;
+    bool runCommand(String sql, int (*callbackFunc)(void *, int, char **, char **)=callback, void* context=0) const;
     
     // Last insert ID
     int lastInsertId() const { return sqlite3_last_insert_rowid(db_); };
@@ -39,7 +39,7 @@ private:
         {
             std::cout << azColName << " = " << (argv[i] ? argv[i] : "NULL") << "\n";
         }
-        
+    
         std::cout << "\n";
         return 0;
     }

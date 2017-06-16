@@ -36,10 +36,10 @@ DBConnector::~DBConnector()
 }
 
 
-bool DBConnector::runCommand(juce::String command) const
+bool DBConnector::runCommand(juce::String command, int (*callbackFunc)(void *, int, char **, char **), void *context) const
 {
     char *zErrMsg = 0;
-    int rc = sqlite3_exec(db_, command.toRawUTF8(), callback, 0, &zErrMsg);
+    int rc = sqlite3_exec(db_, command.toRawUTF8(), callbackFunc, context, &zErrMsg);
     
     if (rc != SQLITE_OK)
     {

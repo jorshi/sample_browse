@@ -16,7 +16,8 @@
 //==============================================================================
 /*
 */
-class SampleGrid    : public Component
+class SampleGrid    : public Component,
+                      public ButtonListener
 {
 public:
     SampleGrid(int numSquares);
@@ -26,6 +27,9 @@ public:
     void resized() override;
 
 private:
+    // Button callback
+    void buttonClicked(Button* button) override;
+    
     int numSquares_;
     
     OwnedArray<SamplePad> pads;
