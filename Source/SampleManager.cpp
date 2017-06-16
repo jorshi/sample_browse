@@ -13,6 +13,7 @@
 SampleManager::SampleManager()
 {
     sampleLoader_ = new SampleLoader;
+    thumbnailCache_ = new AudioThumbnailCache(64);
 }
 
 void SampleManager::loadNewSamples()
@@ -33,6 +34,7 @@ void SampleManager::updateGridRandom()
     {
         currentSamples_.swapWith(queuedSamples_);
         queuedSamples_.clear();
+        updateThumbnails();
     }
 }
 
@@ -45,4 +47,16 @@ Sample::Ptr SampleManager::getSample(int num) const
     }
     
     return nullptr;
+}
+
+
+void SampleManager::updateThumbnails()
+{
+    thumbnails_.clear();
+    for (auto sample = currentSamples_.begin(); sample < currentSamples_.end(); ++sample)
+    {
+        AudioThumbnail* newThumbnail = new AudioThumbnail(512, loader_.getFormatManager(), *thumbnailCache_);
+        newThumbnail->setSource(new FileInputSource((*sample)->getFile()));
+        (*sample)->setThumbnail(newThumbnail);
+    }
 }

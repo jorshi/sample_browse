@@ -22,17 +22,18 @@ DBConnector::DBConnector()
     else
     {
         isConnected_ = true;
-        std::cout << "DB connection established\n";
+        //std::cout << "DB connection established\n";
         
         // Setup Tables
         setupTables();
     }
 }
 
+
 DBConnector::~DBConnector()
 {
     sqlite3_close(db_);
-    std::cout << "DB Connection closed\n";
+    //std::cout << "DB Connection closed\n";
 }
 
 
@@ -43,7 +44,7 @@ bool DBConnector::runCommand(juce::String command, int (*callbackFunc)(void *, i
     
     if (rc != SQLITE_OK)
     {
-        std::cerr << "SQL ERROR: " << zErrMsg << "\n";
+        //std::cout << "SQL ERROR: " << zErrMsg << "\n";
         return false;
     }
     
@@ -55,7 +56,7 @@ void DBConnector::setupTables()
 {
     // Need to setup tables
     String sqlSamples = "CREATE TABLE IF NOT EXISTS`samples` ( " \
-        "`id` INTEGER PRIMARY KEY AUTOINCREMENT, " \
+        "`id` INTEGER PRIMARY KEY, " \
         "`name` VARCHAR(200) NOT NULL, " \
         "`path` VARCHAR(200) NOT NULL, " \
         "`start_time` DOUBLE DEFAULT NULL, " \
@@ -64,12 +65,12 @@ void DBConnector::setupTables()
         ");";
     
     String sqlTags = "CREATE TABLE IF NOT EXISTS `tags` ( " \
-        "`id` INTEGER PRIMARY KEY AUTOINCREMENT, " \
+        "`id` INTEGER PRIMARY KEY, " \
         "`tag` VARCHAR(200) NOT NULL UNIQUE " \
         ");";
     
     String sqlSampleTags = "CREATE TABLE IF NOT EXISTS `sample_tags` ( " \
-        "`id` INTEGER PRIMARY KEY AUTOINCREMENT, " \
+        "`id` INTEGER PRIMARY KEY, " \
         "`sample_id` INT(11) NOT NULL, " \
         "`tag_id` INT(11) NOT NULL, " \
         "UNIQUE (`sample_id`, `tag_id`), " \
@@ -81,7 +82,7 @@ void DBConnector::setupTables()
             runCommand(sqlTags) &&
             runCommand(sqlSampleTags))
     {
-        std::cout << "All tables succesfully created\n";
+        //std::cout << "All tables succesfully created\n";
     }
 }
 

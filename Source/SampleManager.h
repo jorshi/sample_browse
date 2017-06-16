@@ -15,6 +15,7 @@
 #include "Sample.h"
 #include "DirectoryChooser.h"
 #include "dbConnector.h"
+#include "FileLoader.h"
 
 class SampleManager
 {
@@ -33,12 +34,14 @@ public:
     
     Sample::Ptr getSample(int num) const;
     
+    // Load thumbnail caches
+    void updateThumbnails();
+    
 private:
     
     static int selectSampleCallback(void *param, int argc, char **argv, char **azCol)
     {
         SampleManager* manager = reinterpret_cast<SampleManager*>(param);
-        
         if (argc == 5)
         {
             Sample::Ptr newSample = new Sample();
@@ -54,9 +57,14 @@ private:
     ReferenceCountedArray<Sample> currentSamples_;
     ReferenceCountedArray<Sample> queuedSamples_;
     
+    // Thumbnails
+    OwnedArray<AudioThumbnail> thumbnails_;
+    ScopedPointer<AudioThumbnailCache> thumbnailCache_;
+    
     ScopedPointer<SampleLoader> sampleLoader_;
     DirectoryChooser directoryChooser_;
     DBConnector db_;
+    FileLoader loader_;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SampleManager)
 };

@@ -13,6 +13,12 @@
               pluginAAXCategory="AAX_ePlugInCategory_Dynamics" jucerVersion="5.0.2">
   <MAINGROUP id="bS7Zw9" name="SampleBrowser">
     <GROUP id="{05089DAC-D89A-209E-728C-18A42D6C77FD}" name="Source">
+      <FILE id="ee6Pvn" name="WaveformComponent.cpp" compile="1" resource="0"
+            file="Source/WaveformComponent.cpp"/>
+      <FILE id="avyDiG" name="WaveformComponent.h" compile="0" resource="0"
+            file="Source/WaveformComponent.h"/>
+      <FILE id="pjy6Bk" name="FileLoader.cpp" compile="1" resource="0" file="Source/FileLoader.cpp"/>
+      <FILE id="mKMdO2" name="FileLoader.h" compile="0" resource="0" file="Source/FileLoader.h"/>
       <FILE id="S2Y2pg" name="PadButton.cpp" compile="1" resource="0" file="Source/PadButton.cpp"/>
       <FILE id="iCHD2Z" name="PadButton.h" compile="0" resource="0" file="Source/PadButton.h"/>
       <FILE id="Ld8SJU" name="Sample.cpp" compile="1" resource="0" file="Source/Sample.cpp"/>

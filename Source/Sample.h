@@ -35,14 +35,15 @@ public:
     
     // Getters
     int getId() const { return id_; };
-    const File& getFile() const { return path_; };
+    File& getFile() { return path_; };
     const String& getName() const { return name_; };
+    AudioThumbnail& getThumbnail() { return *thumbnail_; };
     
     // Setters
     void setId(const int& id) { id_ = id; };
     void setName(const String& name) { name_ = name; };
     void setPath(const String& path) { path_ = File(path); };
-    
+    void setThumbnail(AudioThumbnail* newThumb) { thumbnail_ = newThumb; };
     
 private:
     
@@ -52,4 +53,6 @@ private:
     
     double startTime_;
     double stopTime_;
+    
+    ScopedPointer<AudioThumbnail> thumbnail_;
 };

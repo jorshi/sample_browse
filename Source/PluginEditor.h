@@ -18,6 +18,8 @@
 #include "SampleManager.h"
 #include "Sample.h"
 
+#include "WaveformComponent.h"
+
 
 //==============================================================================
 /**
@@ -35,26 +37,27 @@ public:
     void resized() override;
 
 private:
-    // Reference to processor
-    SampleBrowserAudioProcessor& processor;
-    
     // Button callback
     void buttonClicked(Button* button) override;
     
     // Action callback
     void actionListenerCallback(const String& message) override;
     
+    // Reference to processor
+    SampleBrowserAudioProcessor& processor;
+    
     SampleManager* sampleManager;
-    
     DirectoryChooser directoryChooser;
-    
     CustomLookAndFeel customLookAndFeel;
-    ScopedPointer<SampleGrid> sampleGrid;
+    Sample::Ptr uiSample;
     
+    // Components
+    ScopedPointer<SampleGrid> sampleGrid;
+    ScopedPointer<WaveformComponent> waveform;
     TextButton filesButton;
     TextButton loadSamples;
-    
-    Sample::Ptr uiSample;
+
+
 
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SampleBrowserAudioProcessorEditor)

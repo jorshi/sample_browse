@@ -30,6 +30,10 @@ SampleBrowserAudioProcessorEditor::SampleBrowserAudioProcessorEditor (SampleBrow
     loadSamples.setButtonText("Set Samples");
     loadSamples.addListener(this);
     
+    
+    waveform = new WaveformComponent;
+    addAndMakeVisible(waveform);
+    
     setSize (650, 650);
 }
 
@@ -54,11 +58,12 @@ void SampleBrowserAudioProcessorEditor::paint (Graphics& g)
 
 void SampleBrowserAudioProcessorEditor::resized()
 {
-    // This is generally where you'll want to lay out the positions of any
-    // subcomponents in your editor..
     sampleGrid->setBounds(75, 125, 496, 496);
     filesButton.setBounds(481, 51, 90, 30);
     loadSamples.setBounds(75, 51, 90, 30);
+    
+    int waveformWidth = 275;
+    waveform->setBounds((getWidth() - waveformWidth) / 2, 35, waveformWidth, 75);
 }
 
 //==============================================================================
@@ -79,6 +84,5 @@ void SampleBrowserAudioProcessorEditor::buttonClicked(juce::Button *button)
 void SampleBrowserAudioProcessorEditor::actionListenerCallback(const juce::String &message)
 {
     int pad = message.getIntValue();
-    uiSample = sampleManager->getSample(pad);
-    repaint();
+    waveform->updateSampleAndDraw(sampleManager->getSample(pad));
 }
