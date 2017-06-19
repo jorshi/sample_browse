@@ -30,8 +30,10 @@ public:
     // Prompt user to input directory for new samples
     void loadNewSamples();
     
+    // Loads a random selection of samples into the current sample buffer
     void updateGridRandom();
     
+    // Get a pointer to one of the samples int he sample buffers
     Sample::Ptr getSample(int num) const;
     
     // Load thumbnail caches
@@ -39,6 +41,7 @@ public:
     
 private:
     
+    // Static callback for a select sample query
     static int selectSampleCallback(void *param, int argc, char **argv, char **azCol)
     {
         SampleManager* manager = reinterpret_cast<SampleManager*>(param);
@@ -54,11 +57,12 @@ private:
         return 0;
     }
     
+    // Current samples and queued samples. Queued sampels are collected as they are loaded
+    // from the database on a select before being moved into the current sample array
     ReferenceCountedArray<Sample> currentSamples_;
     ReferenceCountedArray<Sample> queuedSamples_;
     
     // Thumbnails
-    OwnedArray<AudioThumbnail> thumbnails_;
     ScopedPointer<AudioThumbnailCache> thumbnailCache_;
     
     ScopedPointer<SampleLoader> sampleLoader_;

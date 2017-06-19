@@ -26,13 +26,22 @@ SampleLoader::~SampleLoader()
 
 void SampleLoader::run()
 {
+    // Directory exploration is performed on a background thread
     while(!threadShouldExit())
     {
+        // The directories variable can be accessed from this thread as well
+        // as the parent, make sure that they don't get accessed at the same time
         mutex_.enter();
+        
+        // If the directory queue is empty and no directories are being loaded
+        // then this thread can shutdown
         if (directories_.size() < 1 && currentlyLoading_ == nullptr)
         {
             signalThreadShouldExit();
         }
+        
+        // If no directory is being explored currently and the directory queue is not
+        // empty then mark the next directory for loading
         else if (directories_.size() > 0 && currentlyLoading_ == nullptr)
         {
             currentlyLoading_ = new File(directories_.front());
@@ -40,13 +49,12 @@ void SampleLoader::run()
         }
         mutex_.exit();
         
+        // Load samples from the directoy contained in the currently loading pointer
         if (currentlyLoading_ != nullptr)
         {
             loadSamples();
         }
 
-        
-        std::cout << directories_.size() << "\n";
         wait(1000);
     }
 }
@@ -54,14 +62,18 @@ void SampleLoader::run()
 
 void SampleLoader::loadSamples()
 {
+    // Arrays for holding the folder names as the directories are explored
     Array<String> tags;
     Array<Sample> samples;
     TaggedSamples sampleTags;
 
+    // Save the top level directory name
     tags.add(currentlyLoading_->getFileName());
-    exploreDirectory(*currentlyLoading_, tags);
-        
     
+    // Recursively explore the given folder
+    exploreDirectory(*currentlyLoading_, tags);
+
+    // Finished exploring the directory
     currentlyLoading_.release();
 }
 
@@ -99,10 +111,4 @@ void SampleLoader::addDirectory(File& directory)
     {
         startThread();
     }
-}
-
-
-void SampleLoader::saveSample(Sample &sample)
-{
-    
 }

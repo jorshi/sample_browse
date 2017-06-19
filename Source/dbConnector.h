@@ -46,7 +46,7 @@ private:
     
     //===========================================================================
     void setupTables();
-    
+
     int setupSampleTableCallback(void *notUsed, int argc, char **argv, char **azColName);
     
     

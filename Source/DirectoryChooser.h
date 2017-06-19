@@ -30,6 +30,5 @@ private:
     
     ScopedPointer<FileChooser> fileChooser_;
     
-    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(DirectoryChooser);
 };

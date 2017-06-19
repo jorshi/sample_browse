@@ -24,8 +24,8 @@ public:
     
 private:
     
-    int padId_;
-    
+    // Override to send message on button depressed
     void buttonStateChanged() override;
     
+    int padId_;
 };

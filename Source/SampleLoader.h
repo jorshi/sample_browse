@@ -37,11 +37,10 @@ private:
     // Run thread
     void run() override;
     
+    // 
     void loadSamples();
     
     void exploreDirectory(const File& directory, Array<String>& tags);
-    
-    void saveSample(Sample& sample);
     
     
     std::queue<File> directories_;
