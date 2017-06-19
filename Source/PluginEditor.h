@@ -14,12 +14,19 @@
 #include "PluginProcessor.h"
 #include "CustomLookAndFeel.h"
 #include "SampleGrid.h"
+#include "DirectoryChooser.h"
+#include "SampleManager.h"
+#include "Sample.h"
+
+#include "WaveformComponent.h"
 
 
 //==============================================================================
 /**
 */
-class SampleBrowserAudioProcessorEditor  : public AudioProcessorEditor
+class SampleBrowserAudioProcessorEditor  : public AudioProcessorEditor,
+                                           public ButtonListener,
+                                           public ActionListener
 {
 public:
     SampleBrowserAudioProcessorEditor (SampleBrowserAudioProcessor&);
@@ -30,14 +37,28 @@ public:
     void resized() override;
 
 private:
-    // This reference is provided as a quick way for your editor to
-    // access the processor object that created it.
+    // Button callback
+    void buttonClicked(Button* button) override;
+    
+    // Action callback
+    void actionListenerCallback(const String& message) override;
+    
+    // Reference to processor
     SampleBrowserAudioProcessor& processor;
     
+    SampleManager* sampleManager;
+    DirectoryChooser directoryChooser;
     CustomLookAndFeel customLookAndFeel;
-    ScopedPointer<SampleGrid> sampleGrid;
+    Sample::Ptr uiSample;
     
+    // Components
+    ScopedPointer<SampleGrid> sampleGrid;
+    ScopedPointer<WaveformComponent> waveform;
     TextButton filesButton;
+    TextButton loadSamples;
+
+
+
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SampleBrowserAudioProcessorEditor)
 };

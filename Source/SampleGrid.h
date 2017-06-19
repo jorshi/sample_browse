@@ -12,11 +12,14 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "SamplePad.h"
+#include "PadButton.h"
 
 //==============================================================================
 /*
 */
-class SampleGrid    : public Component
+class SampleGrid    : public Component,
+                      public ActionListener,
+                      public ActionBroadcaster
 {
 public:
     SampleGrid(int numSquares);
@@ -25,11 +28,12 @@ public:
     void paint (Graphics&) override;
     void resized() override;
 
-private:
+private:    
+    void actionListenerCallback(const String& message) override;
+    
     int numSquares_;
     
-    OwnedArray<SamplePad> pads;
-    OwnedArray<ShapeButton> buttonPads;
+    OwnedArray<PadButton> buttonPads;
     
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SampleGrid)

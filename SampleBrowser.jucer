@@ -1,18 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="Pm83vz" name="SampleBrowser" displaySplashScreen="1" reportAppUsage="1"
+<JUCERPROJECT id="Pm83vz" name="Sieve" displaySplashScreen="1" reportAppUsage="1"
               splashScreenColour="Dark" projectType="audioplug" version="1.0.0"
-              bundleIdentifier="com.UVic.SampleBrowser" includeBinaryInAppConfig="1"
+              bundleIdentifier="com.UVic.Sieve" includeBinaryInAppConfig="1"
               buildVST="1" buildVST3="0" buildAU="1" buildAUv3="0" buildRTAS="0"
-              buildAAX="0" buildStandalone="1" enableIAA="0" pluginName="SampleBrowser"
-              pluginDesc="SampleBrowser" pluginManufacturer="University of Victoria"
+              buildAAX="0" buildStandalone="1" enableIAA="0" pluginName="Sieve"
+              pluginDesc="Sieve" pluginManufacturer="University of Victoria"
               pluginManufacturerCode="Uvic" pluginCode="Pm83" pluginChannelConfigs=""
               pluginIsSynth="1" pluginWantsMidiIn="1" pluginProducesMidiOut="0"
-              pluginIsMidiEffectPlugin="0" pluginEditorRequiresKeys="0" pluginAUExportPrefix="SampleBrowserAU"
-              pluginRTASCategory="" aaxIdentifier="com.yourcompany.SampleBrowser"
-              pluginAAXCategory="AAX_ePlugInCategory_Dynamics" jucerVersion="5.0.2">
-  <MAINGROUP id="bS7Zw9" name="SampleBrowser">
+              pluginIsMidiEffectPlugin="0" pluginEditorRequiresKeys="0" pluginAUExportPrefix="SieveAU"
+              pluginRTASCategory="" aaxIdentifier="com.yourcompany.Sieve" pluginAAXCategory="AAX_ePlugInCategory_Dynamics"
+              jucerVersion="5.0.2" companyName="University of Victoria" companyWebsite="uvic.ca">
+  <MAINGROUP id="bS7Zw9" name="Sieve">
     <GROUP id="{05089DAC-D89A-209E-728C-18A42D6C77FD}" name="Source">
+      <FILE id="ee6Pvn" name="WaveformComponent.cpp" compile="1" resource="0"
+            file="Source/WaveformComponent.cpp"/>
+      <FILE id="avyDiG" name="WaveformComponent.h" compile="0" resource="0"
+            file="Source/WaveformComponent.h"/>
+      <FILE id="pjy6Bk" name="FileLoader.cpp" compile="1" resource="0" file="Source/FileLoader.cpp"/>
+      <FILE id="mKMdO2" name="FileLoader.h" compile="0" resource="0" file="Source/FileLoader.h"/>
+      <FILE id="S2Y2pg" name="PadButton.cpp" compile="1" resource="0" file="Source/PadButton.cpp"/>
+      <FILE id="iCHD2Z" name="PadButton.h" compile="0" resource="0" file="Source/PadButton.h"/>
+      <FILE id="Ld8SJU" name="Sample.cpp" compile="1" resource="0" file="Source/Sample.cpp"/>
+      <FILE id="rhMESi" name="Sample.h" compile="0" resource="0" file="Source/Sample.h"/>
+      <FILE id="xdsdca" name="SampleLoader.cpp" compile="1" resource="0"
+            file="Source/SampleLoader.cpp"/>
+      <FILE id="nNsRAE" name="SampleLoader.h" compile="0" resource="0" file="Source/SampleLoader.h"/>
+      <FILE id="SvLWAW" name="SampleManager.cpp" compile="1" resource="0"
+            file="Source/SampleManager.cpp"/>
+      <FILE id="F4C8OM" name="SampleManager.h" compile="0" resource="0" file="Source/SampleManager.h"/>
+      <FILE id="LSj2oJ" name="DirectoryChooser.cpp" compile="1" resource="0"
+            file="Source/DirectoryChooser.cpp"/>
+      <FILE id="cV3NXN" name="DirectoryChooser.h" compile="0" resource="0"
+            file="Source/DirectoryChooser.h"/>
       <FILE id="nfA7ux" name="dbConnector.cpp" compile="1" resource="0" file="Source/dbConnector.cpp"/>
       <FILE id="oAU1E8" name="dbConnector.h" compile="0" resource="0" file="Source/dbConnector.h"/>
       <FILE id="wccNfZ" name="SamplePad.cpp" compile="1" resource="0" file="Source/SamplePad.cpp"/>
