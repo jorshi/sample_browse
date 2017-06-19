@@ -34,7 +34,7 @@ SampleBrowserAudioProcessorEditor::SampleBrowserAudioProcessorEditor (SampleBrow
     waveform = new WaveformComponent;
     addAndMakeVisible(waveform);
     
-    setSize (650, 650);
+    setSize (650, 675);
 }
 
 SampleBrowserAudioProcessorEditor::~SampleBrowserAudioProcessorEditor()
