@@ -19,6 +19,8 @@
 #include "Sample.h"
 
 #include "WaveformComponent.h"
+#include "HeaderComponent.h"
+#include "MainComponent.h"
 
 
 //==============================================================================
@@ -54,6 +56,8 @@ private:
     // Components
     ScopedPointer<SampleGrid> sampleGrid;
     ScopedPointer<WaveformComponent> waveform;
+    ScopedPointer<HeaderComponent> header;
+    ScopedPointer<MainComponent> main;
     TextButton filesButton;
     TextButton loadSamples;
 

@@ -27,8 +27,14 @@ public:
     struct Colours {
         static const ColourGradient background;
         static const ColourGradient backgroundOver;
+        static const ColourGradient headerGradient;
         static const Colour buttonEdge;
+        static const Colour headerText;
+        static const Colour buttons;
+        static const Colour buttonOver;
     };
+    
+    static const Typeface::Ptr offsideTypeface;
     
 private:
     

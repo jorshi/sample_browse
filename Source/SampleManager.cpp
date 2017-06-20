@@ -52,7 +52,6 @@ Sample::Ptr SampleManager::getSample(int num) const
 
 void SampleManager::updateThumbnails()
 {
-    thumbnails_.clear();
     for (auto sample = currentSamples_.begin(); sample < currentSamples_.end(); ++sample)
     {
         AudioThumbnail* newThumbnail = new AudioThumbnail(512, loader_.getFormatManager(), *thumbnailCache_);

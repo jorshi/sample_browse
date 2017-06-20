@@ -14,34 +14,36 @@
 CustomLookAndFeel::CustomLookAndFeel()
 {
     buttonRadius = 7.0f;
+    setColour(TextButton::textColourOffId, Colours::headerText);
 }
 
 void CustomLookAndFeel::drawButtonBackground (Graphics& g, Button& button, const Colour& backgroundColour,
                                             bool isMouseOverButton, bool isButtonDown)
 {
     Rectangle<float> buttonArea = button.getLocalBounds().toFloat();
-    g.setColour(Colours::buttonEdge);
-    g.drawRoundedRectangle(buttonArea, buttonRadius, 1.5f);
+    g.setColour(Colours::headerText);
+    g.drawRoundedRectangle(buttonArea, 0.5f, 0.5f);
     
-    if (isMouseOverButton)
+    if (button.isOver() || button.isDown())
     {
-        g.setGradientFill(Colours::backgroundOver);
-        g.fillRoundedRectangle(buttonArea, buttonRadius);
+        g.setColour(Colours::buttonOver);
+        g.fillRect(buttonArea);
     }
-    
-    
 }
 
 
 // Colours
 const Colour CustomLookAndFeel::Colours::buttonEdge = Colour::fromRGB(174, 191, 215);
+const Colour CustomLookAndFeel::Colours::headerText = Colour::fromRGB(95, 95, 95);
+const Colour CustomLookAndFeel::Colours::buttons = Colour::fromRGB(50, 50, 50);
+const Colour CustomLookAndFeel::Colours::buttonOver = Colour::fromRGB(175, 175, 175);
 
 // Gradients
 const ColourGradient CustomLookAndFeel::Colours::background = ColourGradient(
-                                                                             Colour::fromRGB(140, 140, 140) ,
+                                                                             Colour::fromRGB(199, 199, 199) ,
                                                                              0.0f,
                                                                              0.0f,
-                                                                             Colour::fromRGB(160, 160, 160),
+                                                                             Colour::fromRGB(214, 214, 214),
                                                                              0.0f,
                                                                              650.0f,
                                                                              false);
@@ -53,3 +55,15 @@ const ColourGradient CustomLookAndFeel::Colours::backgroundOver = ColourGradient
                                                                              0.0f,
                                                                              650.0f,
                                                                              false);
+
+const ColourGradient CustomLookAndFeel::Colours::headerGradient = ColourGradient(Colour::fromRGB(160, 160, 160),
+                                                                                 0.0f,
+                                                                                 0.0f,
+                                                                                 Colour::fromRGB(146, 146, 146),
+                                                                                 0.0f,
+                                                                                 50.0f,
+                                                                                 false);
+
+// Custom Typeface
+const Typeface::Ptr CustomLookAndFeel::offsideTypeface = Typeface::createSystemTypefaceFor(BinaryData::OffsideRegular_ttf, BinaryData::OffsideRegular_ttfSize);
+                                                                            

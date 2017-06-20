@@ -12,6 +12,10 @@
               pluginRTASCategory="" aaxIdentifier="com.yourcompany.Sieve" pluginAAXCategory="AAX_ePlugInCategory_Dynamics"
               jucerVersion="5.0.2" companyName="University of Victoria" companyWebsite="uvic.ca">
   <MAINGROUP id="bS7Zw9" name="Sieve">
+    <GROUP id="{22B62575-2E8A-2AC3-6CB4-58FFE5C4B28D}" name="Resources">
+      <FILE id="GSG8XL" name="Offside-Regular.ttf" compile="0" resource="1"
+            file="Resources/Offside-Regular.ttf"/>
+    </GROUP>
     <GROUP id="{05089DAC-D89A-209E-728C-18A42D6C77FD}" name="Source">
       <GROUP id="{CF9A02B6-1242-D27E-45D1-90779AC6E038}" name="DSP">
         <FILE id="lo16qy" name="PluginProcessor.cpp" compile="1" resource="0"
@@ -30,8 +34,15 @@
         <FILE id="F4C8OM" name="SampleManager.h" compile="0" resource="0" file="Source/SampleManager.h"/>
       </GROUP>
       <GROUP id="{51E519B5-B385-27A8-E6CC-7D8128A84556}" name="UI">
-        <FILE id="wccNfZ" name="SamplePad.cpp" compile="1" resource="0" file="Source/SamplePad.cpp"/>
-        <FILE id="AfWQQC" name="SamplePad.h" compile="0" resource="0" file="Source/SamplePad.h"/>
+        <FILE id="TwCL4J" name="MainComponent.cpp" compile="1" resource="0"
+              file="Source/MainComponent.cpp"/>
+        <FILE id="qInTDm" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+        <FILE id="eMbVFZ" name="HeaderComponent.cpp" compile="1" resource="0"
+              file="Source/HeaderComponent.cpp"/>
+        <FILE id="v6CNYH" name="HeaderComponent.h" compile="0" resource="0"
+              file="Source/HeaderComponent.h"/>
+        <FILE id="QOmMwY" name="PadButton.cpp" compile="1" resource="0" file="Source/PadButton.cpp"/>
+        <FILE id="rJJOog" name="PadButton.h" compile="0" resource="0" file="Source/PadButton.h"/>
         <FILE id="M0md50" name="CustomLookAndFeel.cpp" compile="1" resource="0"
               file="Source/CustomLookAndFeel.cpp"/>
         <FILE id="Yzx2gM" name="CustomLookAndFeel.h" compile="0" resource="0"
